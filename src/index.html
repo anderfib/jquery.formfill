@@ -139,7 +139,7 @@
 
         (function ($, window) {
 
-            
+
             $('.form input[name]').on('change', function (e) {
                 console.log(e);
             });
@@ -158,6 +158,9 @@
                 },
                 keyMap: {
                     select23: 'select'
+                },
+                complete: function (e, data) {
+                    console.log("complete", e, data);
                 }
             });
 
