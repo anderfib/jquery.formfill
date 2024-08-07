@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="http://adminlte.la998.com/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://adminlte.la998.com/dist/css/AdminLTE.min.css">
+    <style>
+        .form.form-horizontal .form-group {
+            margin-bottom: 5px;
+        }
+
+        .form.form-horizontal .form-group-sm .form-control {
+            border-radius: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">form test</h3>
+        </div>
+        <form class="form-horizontal form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Text</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Radio</label>
+                    <div class="col-sm-10">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radio" value="r1">
+                                Option one is this and that&mdash;be sure to include why it's great
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radio" value="r2">
+                                Option two can be something else and selecting it will deselect option one
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radio" value="r3">
+                                Option three is disabled
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Checkbox</label>
+                    <div class="col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input name="checkbox" value="c1" type="checkbox">
+                                Checkbox 1
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input name="checkbox" value="c2" type="checkbox">
+                                Checkbox 2
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input name="checkbox" value="c3" type="checkbox">
+                                Checkbox disabled
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="checkbox" value="c4" type="checkbox">
+                                Checkbox disabled
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Select</label>
+                    <div class="col-sm-10">
+                        <select name="select" class="form-control">
+                            <option value="s1">option 1</option>
+                            <option value="s2">option 2</option>
+                            <option value="s3">option 3</option>
+                            <option value="s4">option 4</option>
+                            <option value="s5">option 5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Select Multiple</label>
+                    <div class="col-sm-10">
+                        <select name="selectm" multiple class="form-control">
+                            <option value="sm1">option 1</option>
+                            <option value="sm2">option 2</option>
+                            <option value="sm3">option 3</option>
+                            <option value="sm4">option 4</option>
+                            <option value="sm5">option 5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Textarea</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" name="textarea" rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-info pull-right">Sign in</button>
+            </div>
+        </form>
+
+    </div>
+    <script src="http://adminlte.la998.com/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+    <script src="./formfill.js"></script>
+
+    <script>
+
+
+        (function ($, window) {
+
+            
+            $('.form input[name]').on('change', function (e) {
+                console.log(e);
+            });
+            $('.form').formFill({
+                data: {
+                    text: 'text',
+                    password: 'password',
+                    radio: 'r2',
+                    checkbox: ['c2', 'c1', 'c3'],
+                    select23: 's2',
+                    selectm: ['sm1', 'sm3'],
+                    textarea: 'textarea6666'
+                },
+                parse: function (data) {
+                    data.select = data.select23;
+                },
+                keyMap: {
+                    select23: 'select'
+                }
+            });
+
+            $('.form').on('submit', function (e) {
+
+                console.log($(this).serializeArray());
+            })
+        })(jQuery, window)
+    </script>
+</body>
+
+</html>
